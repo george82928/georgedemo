@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  contextPath: /georgedemo
+
+restapi:
+  baseurl: http://api.openweathermap.org/data/2.5/weather?q=
+  country: au
+  key: f0ae30dc0473e56e792d187ce2d81175

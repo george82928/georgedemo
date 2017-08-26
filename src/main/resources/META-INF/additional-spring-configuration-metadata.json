@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "restapi.baseurl",
+    "type": "java.lang.String",
+    "description": "Base URL for the OpenWeatherMap API"
+  },
+  {
+    "name": "restapi.country",
+    "type": "java.lang.String",
+    "description": "The country code"
+  },
+  {
+    "name": "restapi.key",
+    "type": "java.lang.String",
+    "description": "My own private key for OpenWeatherMap"
+  }
+]}

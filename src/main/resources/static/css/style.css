@@ -1,0 +1,14 @@
+.customPanel {
+    margin: 100px;
+    width: 80%;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 30px blue;
+}
+
+.customTable {
+	font-weight: bold;
+	font-size: 15px;
+	border: 1px solid #ddd;
+}
