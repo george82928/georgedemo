@@ -14,6 +14,12 @@ import com.george.springboot.model.Weather;
 import com.george.springboot.service.WeatherService;
 import com.george.springboot.util.CustomErrorType;
 
+/**
+ * Controller for handling REST API calls
+ * 
+ * @author George Zheng
+ *
+ */
 @RestController
 @RequestMapping("/weather")
 public class RestApiController {
@@ -23,6 +29,11 @@ public class RestApiController {
 	@Autowired
 	WeatherService weatherService;
 
+	/**
+	 * Method for getting the weather data
+	 * @param city Name of the city
+	 * @return {@code ResponseEntity} ResponseEntity with weather data
+	 */
 	@RequestMapping(value = "/{city}", method = RequestMethod.GET)
 	public ResponseEntity<?> getWeather(@PathVariable("city") String city) {
 		logger.info("Fetching Weather with city {}", city);
@@ -32,13 +43,13 @@ public class RestApiController {
 
 			if (weather == null) {
 				logger.error("Weather with city {} not found", city);
-				return new ResponseEntity<Object>(new CustomErrorType("Weather with city " + city + "not found"),
+				return new ResponseEntity<Object>(new CustomErrorType("Weather of city " + city + " not found"),
 						HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error(e.getMessage());
-			return new ResponseEntity<Object>(new CustomErrorType("error happened"), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Object>(new CustomErrorType("Server error occurred"),
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Weather>(weather, HttpStatus.OK);
 	}

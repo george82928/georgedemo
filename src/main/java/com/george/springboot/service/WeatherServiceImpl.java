@@ -14,12 +14,17 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+/**
+ * Service implementation to get weather data of the specific city
+ * 
+ * @author George Zheng
+ *
+ */
 @Service("weatherService")
 public class WeatherServiceImpl implements WeatherService {
 
-	@Autowired
+	// The value of this object should be from application.yml file
 	private RestApiProperties restApiProperties;
-
 	private static final String REST_API_COMMA = ",";
 	private static final String REST_API_KEY = "&APPID=";
 	private static final String JSON_KEY_CITY_NAME = "name";
@@ -33,6 +38,21 @@ public class WeatherServiceImpl implements WeatherService {
 	private static final String JSON_KEY_WIND_SPEED = "speed";
 	private static final String JSON_KEY_WIND_KMH = "km/h";
 
+	/**
+	 * Constructor of this class
+	 * @param restApiProperties {@code RestApiProperties} object
+	 */
+	@Autowired
+	public WeatherServiceImpl(RestApiProperties restApiProperties) {
+		this.restApiProperties = restApiProperties;
+	}
+	
+	/**
+	 * Get the weather data from open weather map api
+	 * @param city City name
+	 * @return {@code Weather} object
+	 * @throws UnirestException
+	 */
 	@Override
 	public Weather findWeatherByNameAndCountry(String city) throws UnirestException {
 		Weather weather = null;
