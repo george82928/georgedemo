@@ -8,10 +8,10 @@ package com.george.springboot.util;
  */
 public class CustomErrorType {
 
-	private String errorMessage;
+	private String message;
 
 	public CustomErrorType(String errorMessage) {
-		this.errorMessage = errorMessage;
+		this.message = errorMessage;
 	}
 
 	/**
@@ -19,7 +19,7 @@ public class CustomErrorType {
 	 * 
 	 * @return String of the error message
 	 */
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getMessage() {
+		return message;
 	}
 }

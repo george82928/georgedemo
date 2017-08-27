@@ -93,7 +93,7 @@ public class RestApiControllerTest {
 		JSONObject weatherJsonObj = new JSONObject(resultStr);
 
 		Assert.assertEquals(result.getResponse().getStatus(), HttpStatus.NOT_FOUND.value());
-		Assert.assertEquals(customErrorType.getErrorMessage(), weatherJsonObj.getString("errorMessage"));
+		Assert.assertEquals(customErrorType.getMessage(), weatherJsonObj.getString("message"));
 	}
 
 	/**
@@ -112,6 +112,6 @@ public class RestApiControllerTest {
 		JSONObject weatherJsonObj = new JSONObject(resultStr);
 
 		Assert.assertEquals(result.getResponse().getStatus(), HttpStatus.INTERNAL_SERVER_ERROR.value());
-		Assert.assertEquals(customErrorType.getErrorMessage(), weatherJsonObj.getString("errorMessage"));
+		Assert.assertEquals(customErrorType.getMessage(), weatherJsonObj.getString("message"));
 	}
 }

@@ -40,15 +40,17 @@ public class WeatherServiceImpl implements WeatherService {
 
 	/**
 	 * Constructor of this class
+	 *
 	 * @param restApiProperties {@code RestApiProperties} object
 	 */
 	@Autowired
 	public WeatherServiceImpl(RestApiProperties restApiProperties) {
 		this.restApiProperties = restApiProperties;
 	}
-	
+
 	/**
 	 * Get the weather data from open weather map api
+	 * 
 	 * @param city City name
 	 * @return {@code Weather} object
 	 * @throws UnirestException
@@ -57,15 +59,21 @@ public class WeatherServiceImpl implements WeatherService {
 	public Weather findWeatherByNameAndCountry(String city) throws UnirestException {
 		Weather weather = null;
 		HttpResponse<JsonNode> jsonResponse = Unirest
-				.get(restApiProperties.getBaseurl() 
-					 + city 
-					 + REST_API_COMMA 
-					 + restApiProperties.getCountry()
-					 + REST_API_KEY 
-					 + restApiProperties.getKey())
-						.header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE).asJson();
-
+				.get(restApiProperties.getBaseurl() + city + REST_API_COMMA + restApiProperties.getCountry()
+						+ REST_API_KEY + restApiProperties.getKey())
+				.header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE).asJson();
 		JSONObject jo = jsonResponse.getBody().getObject();
+		weather = convertJsonToWeather(jo);
+		return weather;
+	}
+
+	/**
+	 * Convert JSON object to Weather object
+	 * @param jo JSONObject
+	 * @return Weather object
+	 */
+	private Weather convertJsonToWeather(JSONObject jo) {
+		Weather weather = null;
 		if (jo != null) {
 			weather = new Weather();
 			weather.setCity(jo.getString(JSON_KEY_CITY_NAME));
@@ -73,8 +81,8 @@ public class WeatherServiceImpl implements WeatherService {
 			double tempKelvin = jo.getJSONObject(JSON_KEY_MAIN).getDouble(JSON_KEY_TEMP);
 			BigDecimal tempK = new BigDecimal(String.valueOf(tempKelvin));
 			BigDecimal start = new BigDecimal(JSON_KEY_TEMP_KELVIN);
-			weather.setTemperature(tempK.subtract(start).setScale(0, RoundingMode.HALF_UP).toString() 
-					+ JSON_KEY_TEMP_CELSIUS_SIGN);
+			weather.setTemperature(
+					tempK.subtract(start).setScale(0, RoundingMode.HALF_UP).toString() + JSON_KEY_TEMP_CELSIUS_SIGN);
 			weather.setUpdatedTime(jo.getLong(JSON_KEY_UPDATED_TIME));
 			double windMeterPerSec = jo.getJSONObject(JSON_KEY_WIND).getDouble(JSON_KEY_WIND_SPEED);
 			String wind = Math.round(windMeterPerSec * 3.6) + JSON_KEY_WIND_KMH;

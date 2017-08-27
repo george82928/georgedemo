@@ -8,11 +8,11 @@ package com.george.springboot.model;
  */
 public class Weather {
 
-	String city;
-	long updatedTime;
-	String weather;
-	String temperature;
-	String wind;
+	private String city;
+	private long updatedTime;
+	private String weather;
+	private String temperature;
+	private String wind;
 
 	/**
 	 * Get city

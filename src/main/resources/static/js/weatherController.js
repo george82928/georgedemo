@@ -79,7 +79,7 @@ app.controller('WeatherController', ['WeatherService', '$http', '$scope', functi
                 self.weatherInfo = data;
                 self.weatherInfo.updatedTime = getUpdatedTime(data.updatedTime);
             }, function(err) {
-                self.errorMessage = err.message;
+                self.errorMessage = err.data.message;
                 self.showError = true;
             });
         } catch (err) {

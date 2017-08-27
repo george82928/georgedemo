@@ -12,3 +12,11 @@
 	font-size: 15px;
 	border: 1px solid #ddd;
 }
+
+td, th {
+	width: 50%;
+}
+
+.customErrorPanel {
+	margin-top: 100px;
+}

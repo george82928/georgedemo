@@ -33,25 +33,24 @@ public class RestApiController {
 	 * Method for getting the weather data
 	 * @param city Name of the city
 	 * @return {@code ResponseEntity} ResponseEntity with weather data
+	 * @throws Throwable 
 	 */
 	@RequestMapping(value = "/{city}", method = RequestMethod.GET)
-	public ResponseEntity<?> getWeather(@PathVariable("city") String city) {
+	public ResponseEntity<?> getWeather(@PathVariable("city") String city) throws Throwable {
 		logger.info("Fetching Weather with city {}", city);
 		Weather weather = null;
 		try {
 			weather = weatherService.findWeatherByNameAndCountry(city);
-
 			if (weather == null) {
 				logger.error("Weather with city {} not found", city);
 				return new ResponseEntity<Object>(new CustomErrorType("Weather of city " + city + " not found"),
 						HttpStatus.NOT_FOUND);
 			}
+			return new ResponseEntity<Weather>(weather, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return new ResponseEntity<Object>(new CustomErrorType("Server error occurred"),
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<Weather>(weather, HttpStatus.OK);
 	}
-
 }

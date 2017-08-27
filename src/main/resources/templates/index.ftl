@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Weather Demo</title>
-    <script src="js/cities.json"></script>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
@@ -33,32 +32,32 @@
             <table class="table table-bordered table-hover customTable">
                 <thead>
                     <tr class="info">
-                        <th>Name</th>
-                        <th>Value</th>
-                        <tbody>
-                            <tr class="info">
-                                <td>City</td>
-                                <td><span>{{weCtrl.weatherInfo.city}}</span></td>
-                            </tr>
-                            <tr class="info">
-                                <td>Updated Time</td>
-                                <td><span>{{weCtrl.weatherInfo.updatedTime}}</span></td>
-                            </tr>
-                            <tr class="info">
-                                <td>Weather</td>
-                                <td><span>{{weCtrl.weatherInfo.weather}}</span></td>
-                            </tr>
-                            <tr class="info">
-                                <td>Temperature</td>
-                                <td><span>{{weCtrl.weatherInfo.temperature}}</span></td>
-                            </tr>
-                            <tr class="info">
-                                <td>Wind</td>
-                                <td><span>{{weCtrl.weatherInfo.wind}}</span></td>
-                            </tr>
-                        </tbody>
+                        <th>Weather Information Key</th>
+                        <th>Weather Information Value</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr class="info">
+                        <td>City</td>
+                        <td><span>{{weCtrl.weatherInfo.city}}</span></td>
+                    </tr>
+                    <tr class="info">
+                        <td>Updated Time</td>
+                        <td><span>{{weCtrl.weatherInfo.updatedTime}}</span></td>
+                    </tr>
+                    <tr class="info">
+                        <td>Weather</td>
+                        <td><span>{{weCtrl.weatherInfo.weather}}</span></td>
+                    </tr>
+                    <tr class="info">
+                        <td>Temperature</td>
+                        <td><span>{{weCtrl.weatherInfo.temperature}}</span></td>
+                    </tr>
+                    <tr class="info">
+                        <td>Wind</td>
+                        <td><span>{{weCtrl.weatherInfo.wind}}</span></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

@@ -1,4 +1,4 @@
-var app = angular.module('weatherApp',['ngResource']);
+var app = angular.module('weatherApp',[]);
 
 app.factory('urls', ['$location', function($location) {
 	var base = $location.absUrl();

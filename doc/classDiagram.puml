@@ -1,0 +1,37 @@
+@startuml
+
+class RestApiProperties {
+	~baseurl
+	~country
+	~key
+}
+interface WeatherService {
+	+findWeatherByNameAndCountry()
+}
+class WeatherServiceImpl {
+	+findWeatherByNameAndCountry()
+}
+class RestApiController {
+	~{static} logger
+	+getWeather()
+}
+
+class Weather {
+	~city
+	~updatedTime
+	~weather
+	~temperature
+	~wind
+}
+
+class CustomErrorType {
+	~errorMessage
+}
+
+WeatherService <|.. WeatherServiceImpl
+RestApiController --> WeatherService
+WeatherServiceImpl --> RestApiProperties
+WeatherServiceImpl ..> Weather
+RestApiController ..> CustomErrorType
+
+@enduml
