@@ -8,7 +8,7 @@
 - Open your command line and follow steps below:
 - Run the following command to checkout the source code from the following url:  
   `git clone git@github.com:george82928/georgedemo.git`
-- Enter georgedemo folder you just checked out, run the following command:
+- Enter georgedemo folder you just checked out, run the following command:  
   `mvn clean install`
 - Enter target folder just generated after running above command, run the following command:  
   `java -jar georgedemo-1.0.jar`
